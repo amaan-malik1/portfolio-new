@@ -2,7 +2,7 @@
 
 ## What this is
 
-Personal portfolio site for **Amaan Malik**, a full-stack and web3 engineer. Single landing page (for now) that presents his flagship product (SolStore / SolCloud), selected projects, capabilities, and contact. The design itself is the proof of skill: the page must demonstrate motion, 3D, and frontend craft, not just describe it.
+Personal portfolio site for **Aman Malik**, a full-stack and web3 engineer. Single landing page (for now) that presents his flagship product (SolStore / SolCloud), selected projects, capabilities, and contact. The design itself is the proof of skill: the page must demonstrate motion, 3D, and frontend craft, not just describe it.
 
 ## Audience
 

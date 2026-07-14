@@ -73,7 +73,7 @@ export function Hero() {
       <div className="pointer-events-none relative mx-auto w-full max-w-[1400px] px-5 pb-16 pt-24 md:px-10 md:pb-20">
         <div className="max-w-4xl">
           <h1 className="type-display text-[clamp(3.4rem,11vw,9.5rem)] text-ink">
-            <Line delay={0.15}>Amaan</Line>
+            <Line delay={0.15}>Aman</Line>
             <Line delay={0.28}>
               <span className="pl-[0.6em]">
                 Malik<span className="text-rose">.</span>

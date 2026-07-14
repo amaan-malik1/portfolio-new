@@ -25,11 +25,27 @@ export const FLAGSHIP: Project = {
     'Usage-metered billing with a grace window and auto-reactivation',
   ],
   stack: ['TypeScript', 'Express', 'Prisma', 'PostgreSQL', 'Redis', 'Solana web3.js', 'Cloudflare R2', 'React'],
-  href: 'https://github.com/amaan-malik1/SolCloud',
+  href: 'https://solstore.pro',
   cover: ['oklch(0.55 0.20 342)', 'oklch(0.35 0.14 300)'],
 }
 
 export const FEATURED: Project[] = [
+  {
+    id: 'noori',
+    name: 'NoorI',
+    mark: '◈',
+    tagline: 'Parental controls that work even when they delete the app.',
+    description:
+      'Network-level protection powered by Cloudflare Zero Trust. Rules enforce at the DNS layer — no on-device agent, no bypass, no spyware. One dashboard, every child, separate policies.',
+    features: [
+      'Block categories, apps, and domains via Cloudflare Gateway DNS rules',
+      'Per-child isolation — each account gets its own identity-scoped policy',
+      'Activity logs with app detection, blocked-site alerts, and 90-day history',
+    ],
+    stack: ['React', 'Express', 'PostgreSQL', 'Cloudflare Zero Trust', 'Prisma', 'Razorpay'],
+    href: 'https://noori.solstore.pro',
+    cover: ['oklch(0.72 0.18 65)', 'oklch(0.38 0.14 30)'],
+  },
   {
     id: 'adora',
     name: 'Adora AI',
@@ -43,28 +59,12 @@ export const FEATURED: Project[] = [
       'Clerk auth in front of a controller-service REST API',
     ],
     stack: ['React 19', 'Express', 'Prisma', 'PostgreSQL', 'Gemini', 'Cloudinary'],
-    href: 'https://github.com/amaan-malik1',
+    href: 'https://adora-ai.vercel.app',
     cover: ['oklch(0.60 0.16 260)', 'oklch(0.40 0.18 340)'],
   },
   {
-    id: 'algosteer',
-    name: 'AlgoSteer',
-    mark: '>>',
-    tagline: 'Point your YouTube algorithm somewhere useful.',
-    description:
-      'Pick a topic and a number of days. A background pulse engine finds high-engagement videos and feeds the recommendation algorithm real signals until your feed follows.',
-    features: [
-      'Pulse engine schedules likes, views, and subscriptions via the YouTube Data API',
-      'Google OAuth with per-topic steering dashboards',
-      'Validation layer that skips restricted or low-signal videos',
-    ],
-    stack: ['React 19', 'Express', 'MongoDB', 'YouTube API', 'Google OAuth'],
-    href: 'https://github.com/amaan-malik1',
-    cover: ['oklch(0.62 0.19 25)', 'oklch(0.38 0.15 342)'],
-  },
-  {
-    id: 'streamify',
-    name: 'Streamify',
+    id: 'learnify',
+    name: 'Learnify',
     mark: '~)',
     tagline: 'Realtime chat and video for language exchange.',
     description:
@@ -75,7 +75,7 @@ export const FEATURED: Project[] = [
       'Thirty-two switchable UI themes',
     ],
     stack: ['React 19', 'Stream', 'Express', 'MongoDB', 'TanStack Query'],
-    href: 'https://github.com/amaan-malik1',
+    href: 'https://learnify-hd52.onrender.com/',
     cover: ['oklch(0.60 0.14 200)', 'oklch(0.35 0.12 250)'],
   },
   {
@@ -91,7 +91,7 @@ export const FEATURED: Project[] = [
       'Trade page with real-time token listings',
     ],
     stack: ['Solidity', 'Hardhat', 'Ethers', 'React', 'thirdweb'],
-    href: 'https://github.com/amaan-malik1',
+    href: 'https://hype-chain-gamma.vercel.app',
     cover: ['oklch(0.65 0.15 90)', 'oklch(0.40 0.16 342)'],
   },
 ]
@@ -115,7 +115,7 @@ export const ARCHIVE: ArchiveItem[] = [
 
 export const SOCIALS = {
   github: 'https://github.com/amaan-malik1',
-  linkedin: 'https://linkedin.com/in/amaan-malik1',
+  linkedin: 'https://linkedin.com/in/amaan-malik1/',
   x: 'https://x.com/amaaan_ahmad',
   email: 'amikm1077@gmail.com',
 }

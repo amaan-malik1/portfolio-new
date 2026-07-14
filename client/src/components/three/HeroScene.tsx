@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 
@@ -64,7 +64,18 @@ function WaveField({ reduce }: { reduce: boolean }) {
   const mat = useRef<THREE.ShaderMaterial>(null)
   const mouseTarget = useRef(new THREE.Vector2(0, 4))
   const strengthTarget = useRef(0)
+  const ray = useRef(new THREE.Raycaster())
+  const plane = useRef(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0))
+  const hit = useRef(new THREE.Vector3())
+  const moved = useRef(false)
   const { camera, pointer } = useThree()
+
+  useEffect(() => {
+    // r3f's pointer defaults to (0,0); only ripple after a real pointer move
+    const arm = () => (moved.current = true)
+    window.addEventListener('pointermove', arm, { once: true })
+    return () => window.removeEventListener('pointermove', arm)
+  }, [])
 
   const { positions, rands } = useMemo(() => {
     const positions = new Float32Array(COLS * ROWS * 3)
@@ -87,37 +98,33 @@ function WaveField({ reduce }: { reduce: boolean }) {
       uTime: { value: 0 },
       uMouse: { value: new THREE.Vector2(0, 4) },
       uMouseStrength: { value: 0 },
-      uColorBase: { value: new THREE.Color('#4a4148') },
+      uColorBase: { value: new THREE.Color('#5c525a') },
       uColorRose: { value: new THREE.Color('#f24d9d') },
       uColorIce: { value: new THREE.Color('#aee3f2') },
     }),
     [],
   )
 
-  useFrame((state, delta) => {
-    if (!mat.current) return
+  useFrame((_, delta) => {
+    if (!mat.current || reduce) return
     const u = mat.current.uniforms
-    if (!reduce) {
-      u.uTime.value += delta
+    u.uTime.value += delta
 
-      // project the pointer onto the field plane (y = 0)
-      const ray = new THREE.Raycaster()
-      ray.setFromCamera(pointer, camera)
-      const hit = new THREE.Vector3()
-      ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), hit)
-      if (hit) {
-        mouseTarget.current.set(hit.x, hit.z)
+    // project the pointer onto the field plane (y = 0)
+    if (moved.current) {
+      ray.current.setFromCamera(pointer, camera)
+      if (ray.current.ray.intersectPlane(plane.current, hit.current)) {
+        mouseTarget.current.set(hit.current.x, hit.current.z)
         strengthTarget.current = 1
       }
-      u.uMouse.value.lerp(mouseTarget.current, 0.08)
-      u.uMouseStrength.value += (strengthTarget.current - u.uMouseStrength.value) * 0.05
-
-      // gentle camera parallax
-      camera.position.x += (pointer.x * 0.9 - camera.position.x) * 0.03
-      camera.position.y += (3.1 - pointer.y * 0.5 - camera.position.y) * 0.03
-      camera.lookAt(0, 0.3, 0)
     }
-    state
+    u.uMouse.value.lerp(mouseTarget.current, 0.08)
+    u.uMouseStrength.value += (strengthTarget.current - u.uMouseStrength.value) * 0.05
+
+    // gentle camera parallax
+    camera.position.x += (pointer.x * 0.9 - camera.position.x) * 0.03
+    camera.position.y += (3.1 - pointer.y * 0.5 - camera.position.y) * 0.03
+    camera.lookAt(0, 0.3, 0)
   })
 
   return (

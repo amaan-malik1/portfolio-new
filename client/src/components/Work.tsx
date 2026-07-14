@@ -1,29 +1,12 @@
 import { useEffect, useRef } from 'react'
-import { motion, useReducedMotion } from 'motion/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowUpRight, Plus } from '@phosphor-icons/react'
 import { FLAGSHIP, FEATURED, ARCHIVE, type Project } from '../data/projects'
 import { CoverArt } from './CoverArt'
+import { Reveal } from './Reveal'
 
 gsap.registerPlugin(ScrollTrigger)
-
-const EASE = [0.16, 1, 0.3, 1] as const
-
-function Reveal({ children, className = '', delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
-  const reduce = useReducedMotion()
-  return (
-    <motion.div
-      initial={reduce ? false : { opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.25 }}
-      transition={{ duration: 0.85, delay, ease: EASE }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
 
 function Chips({ items }: { items: string[] }) {
   return (
@@ -169,7 +152,7 @@ function PosterStack() {
 
 function Archive() {
   return (
-    <div className="mx-auto max-w-[1400px] px-5 pt-28 md:px-10">
+    <div id="archive" className="mx-auto max-w-[1400px] px-5 pt-28 md:px-10">
       <Reveal>
         <h2 className="type-display-soft text-3xl text-ink md:text-4xl">More builds</h2>
       </Reveal>

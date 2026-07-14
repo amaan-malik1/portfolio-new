@@ -1,20 +1,14 @@
-import { motion, useReducedMotion } from 'motion/react'
 import { siSolana, siEthereum, siSolidity, siGreensock, siThreedotjs, type SimpleIcon } from 'simple-icons'
-
-const EASE = [0.16, 1, 0.3, 1] as const
+import { Reveal } from './Reveal'
 
 function Cell({ children, className = '', delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
-  const reduce = useReducedMotion()
   return (
-    <motion.div
-      initial={reduce ? false : { opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.8, delay, ease: EASE }}
+    <Reveal
+      delay={delay}
       className={`relative overflow-hidden rounded-[20px] border border-line/80 bg-surface p-7 md:p-9 ${className}`}
     >
       {children}
-    </motion.div>
+    </Reveal>
   )
 }
 
@@ -30,7 +24,7 @@ export function About() {
   return (
     <section id="about" className="mx-auto max-w-[1400px] px-5 pt-32 md:px-10 md:pt-44">
       <div className="max-w-3xl">
-        <h2 className="type-display text-[clamp(2.4rem,5.5vw,4.6rem)] text-ink">
+        <h2 className="type-display text-[clamp(2.1rem,4.4vw,3.9rem)] text-ink">
           Engineer first, designer close second<span className="text-rose">.</span>
         </h2>
         <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-muted">

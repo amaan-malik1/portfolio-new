@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { motion, useMotionValueEvent, useScroll, useReducedMotion } from 'motion/react'
+import { useState, type CSSProperties } from 'react'
+import { useMotionValueEvent, useScroll } from 'motion/react'
 import { GithubLogo, List, X } from '@phosphor-icons/react'
 
 const LINKS = [
@@ -12,16 +12,13 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const { scrollY } = useScroll()
-  const reduce = useReducedMotion()
 
   useMotionValueEvent(scrollY, 'change', (v) => setScrolled(v > 24))
 
   return (
-    <motion.header
-      initial={reduce ? false : { y: -64, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed inset-x-0 top-0 z-40 transition-colors duration-500 ${
+    <header
+      style={{ '--d': '0.9s' } as CSSProperties}
+      className={`anim-fade-down fixed inset-x-0 top-0 z-40 transition-colors duration-500 ${
         scrolled ? 'bg-bg/70 backdrop-blur-xl border-b border-line/60' : 'border-b border-transparent'
       }`}
     >
@@ -86,6 +83,6 @@ export function Nav() {
           </div>
         </div>
       )}
-    </motion.header>
+    </header>
   )
 }

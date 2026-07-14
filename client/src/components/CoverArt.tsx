@@ -37,8 +37,8 @@ export function CoverArt({ project, className = '' }: { project: Project; classN
         <div
           className="absolute inset-0"
           style={{
-            background: `radial-gradient(120% 90% at 85% 10%, ${hueA} 0%, transparent 55%), radial-gradient(110% 90% at 12% 92%, ${hueB} 0%, transparent 60%)`,
-            opacity: 0.5,
+            background: `radial-gradient(120% 90% at 85% 10%, ${hueA} 0%, transparent 58%), radial-gradient(110% 90% at 12% 92%, ${hueB} 0%, transparent 62%)`,
+            opacity: 0.62,
           }}
         />
         {/* fine engineering grid */}

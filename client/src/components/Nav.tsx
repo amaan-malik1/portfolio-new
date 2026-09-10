@@ -1,6 +1,7 @@
 import { useState, type CSSProperties } from 'react'
 import { useMotionValueEvent, useScroll } from 'motion/react'
 import { GithubLogo, List, X } from '@phosphor-icons/react'
+import resume from "../../public/Aman_Malik_Resume.pdf"
 
 const LINKS = [
   { label: 'Work', href: '#work' },
@@ -18,9 +19,8 @@ export function Nav() {
   return (
     <header
       style={{ '--d': '0.9s' } as CSSProperties}
-      className={`anim-fade-down fixed inset-x-0 top-0 z-40 transition-colors duration-500 ${
-        scrolled ? 'bg-bg/70 backdrop-blur-xl border-b border-line/60' : 'border-b border-transparent'
-      }`}
+      className={`anim-fade-down fixed inset-x-0 top-0 z-40 transition-colors duration-500 ${scrolled ? 'bg-bg/70 backdrop-blur-xl border-b border-line/60' : 'border-b border-transparent'
+        }`}
     >
       <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-5 md:px-10">
         <a href="#top" className="type-display text-lg tracking-tight text-ink">
@@ -37,6 +37,15 @@ export function Nav() {
               {l.label}
             </a>
           ))}
+          <a
+            href={resume}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Resume"
+            className="flex items-center justify-center rounded-md border border-line text-muted transition-colors duration-300  hover:text-ink"
+          >
+            Resume
+          </a>
           <a
             href="https://github.com/amaan-malik1"
             target="_blank"

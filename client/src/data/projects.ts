@@ -43,7 +43,7 @@ export const FEATURED: Project[] = [
       'Activity logs with app detection, blocked-site alerts, and 90-day history',
     ],
     stack: ['React', 'Express', 'PostgreSQL', 'Cloudflare Zero Trust', 'Prisma', 'Razorpay'],
-    href: 'https://noori.solstore.pro',
+    href: 'https://noori.fun',
     cover: ['oklch(0.72 0.18 65)', 'oklch(0.38 0.14 30)'],
   },
   {
